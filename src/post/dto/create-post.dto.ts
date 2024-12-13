@@ -1,11 +1,11 @@
 //import { Category } from "../schemas/post.schema";
 
 export class CreatePostDto {
-   readonly title: string;
-   readonly content: string;
-   //readonly author: string;
+   title: string;
+   content: string;
+   //author: string;
    imageUrl: string;
-   //readonly category: Category;
-   //readonly tags: string;
+   //category: Category;
+   //tags: string;
 }
   

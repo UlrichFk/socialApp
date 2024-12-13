@@ -10,7 +10,13 @@ import { ImageUploadService } from './image-upload.service';
         MongooseModule.forFeature([{ name: 'Posts', schema: PostSchema }]),
     ],
     controllers: [PostController],
-    providers: [PostService, ImageUploadService],
-    exports: [PostService, ImageUploadService],
+    providers: [
+        PostService, 
+        ImageUploadService
+    ],
+    exports: [
+        PostService, 
+        ImageUploadService
+    ],
 })
 export class PostModule {}

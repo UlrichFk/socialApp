@@ -13,17 +13,18 @@ export class PostController {
         private imageUploadService: ImageUploadService
     ){}
 
-    @Post() 
-    @UseInterceptors(FileInterceptor('file')) 
+    @Post()
+    @UseInterceptors(FileInterceptor('file'))
     async createPost(
-        @Body() 
-        post: CreatePostDto, 
-        @UploadedFile() 
-        file: Express.Multer.File) { 
-            if (file) { 
-                post.imageUrl = await this.imageUploadService.uploadImage(file); 
-            } 
-        return this.postService.create(post); 
+      @Body() post: CreatePostDto, 
+      @UploadedFile() file: Express.Multer.File) {
+      if (file) {
+        const imageUrl = await this.imageUploadService.uploadImage(file);
+        if (imageUrl) {
+          post.imageUrl = imageUrl;
+        }
+      }
+      return this.postService.create(post);
     }
 
     @Get()
@@ -39,17 +40,19 @@ export class PostController {
         return this.postService.findById(id);
     }
 
-    @Put(':id') 
-    @UseInterceptors(FileInterceptor('file')) 
+    @Put(':id')
+    @UseInterceptors(FileInterceptor('file'))
     async updatePost(
-        @Param('id') id: string, 
-        @Body() post: UpdatePostDto, 
-        @UploadedFile() file: Express.Multer.File,
-    ) { 
-        if (file) { 
-            post.imageUrl = await this.imageUploadService.uploadImage(file);
-        } 
-        return this.postService.updateById(id, post); 
+      @Param('id') id: string, 
+      @Body() post: UpdatePostDto, 
+      @UploadedFile() file: Express.Multer.File) {
+      if (file) {
+        const imageUrl = await this.imageUploadService.uploadImage(file);
+        if (imageUrl) {
+          post.imageUrl = imageUrl;
+        }
+      }
+      return this.postService.updateById(id, post);
     }
 
     @Delete(':id')

@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import {ImageUploadService} from './post/image-upload.service';
 import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 
@@ -17,6 +18,7 @@ import { CommentModule } from './comment/comment.module';
     CommentModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ImageUploadService],
+  //providers: [ImageUploadService]
 })
 export class AppModule {}

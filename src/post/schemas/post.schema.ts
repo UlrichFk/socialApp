@@ -19,17 +19,17 @@ export class Posts {
     @Prop({ required: true })
     content: string;
 
-    //@Prop()
-    //author: string;
+    /*@Prop()
+    author: string;
 
     @Prop({ required: true })
+    category: Category;
+
+    @Prop()
+    tags: string;*/
+
+    @Prop()
     imageUrl: string;
-
-    //@Prop({ required: true })
-    //category: Category;
-
-    //@Prop()
-    //tags: string;
 
 }
 
